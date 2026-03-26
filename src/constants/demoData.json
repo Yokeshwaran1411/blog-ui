@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Nebula Notes",
+    "content": "<p>A short transmission from the Orion drift, where violet gas clouds braid together like silk.</p>",
+    "pinned": true,
+    "createdAt": "2026-03-24T09:43:10.631Z",
+    "imageUrl": "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?q=80&w=900&auto=format&fit=crop"
+  },
+  {
+    "id": 2,
+    "name": "Atlas of Quiet Moons",
+    "content": "<p>Charting the hush of forgotten satellites and the light they borrow from distant suns.</p>",
+    "pinned": false,
+    "createdAt": "2026-03-24T09:43:10.631Z",
+    "imageUrl": "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=900&auto=format&fit=crop"
+  },
+  {
+    "id": 3,
+    "name": "Signals from the Outer Ring",
+    "content": "<p>A signal log of faint pulses, and the crew who refused to stop listening.</p>",
+    "pinned": false,
+    "createdAt": "2026-03-24T09:43:10.631Z",
+    "imageUrl": "https://images.unsplash.com/photo-1454789548928-9efd52dc4031?q=80&w=900&auto=format&fit=crop"
+  }
+]
