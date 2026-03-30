@@ -1,4 +1,13 @@
-const STRAPI_BASE = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '')
+const STRAPI_BASE = String(import.meta.env.VITE_API_URL || '')
+  .trim()
+  .replace(/^['"]|['"]$/g, '')
+  .replace(/\/$/, '')
+
+const toAbsoluteUrl = (url) => {
+  if (!url) return ''
+  if (/^https?:\/\//i.test(url)) return url
+  return STRAPI_BASE ? `${STRAPI_BASE}${url}` : url
+}
 
 export const stripHtml = (value) =>
   String(value || '')
@@ -14,9 +23,7 @@ export const normalizePost = (post) => {
   const createdAt = post?.createdAt || attributes?.createdAt
   const content = post?.content || attributes?.content || ''
   const image = post?.Image?.[0] || post?.image || attributes?.Image?.[0]
-  const imageUrl = image?.url
-    ? `${STRAPI_BASE}${image.url}`
-    : post?.imageUrl
+  const imageUrl = image?.url ? toAbsoluteUrl(image.url) : post?.imageUrl
 
   return {
     id: post?.id ?? name,
