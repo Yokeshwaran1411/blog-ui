@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 function FooterSection() {
   return (
@@ -10,12 +9,6 @@ function FooterSection() {
           <p className='mt-2 text-sm text-slate-200/80'>
             An archive of transmissions drifting through the cosmos.
           </p>
-        </div>
-        <div className='footer-links'>
-          <Link className='footer-link' to='/'>Home</Link>
-          <Link className='footer-link' to='/posts'>Articles</Link>
-          <Link className='footer-link' to='/about'>About</Link>
-          <Link className='footer-link' to='/contact'>Contact</Link>
         </div>
       </div>
       <div className='footer-bar'>

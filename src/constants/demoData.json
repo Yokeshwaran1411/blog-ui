@@ -2,6 +2,7 @@
   {
     "id": 1,
     "name": "Nebula Notes",
+    "slug": "nebula-notes",
     "content": "<p>A short transmission from the Orion drift, where violet gas clouds braid together like silk.</p>",
     "pinned": true,
     "createdAt": "2026-03-24T09:43:10.631Z",
@@ -10,6 +11,7 @@
   {
     "id": 2,
     "name": "Atlas of Quiet Moons",
+    "slug": "atlas-of-quiet-moons",
     "content": "<p>Charting the hush of forgotten satellites and the light they borrow from distant suns.</p>",
     "pinned": false,
     "createdAt": "2026-03-24T09:43:10.631Z",
@@ -18,6 +20,7 @@
   {
     "id": 3,
     "name": "Signals from the Outer Ring",
+    "slug": "signals-from-the-outer-ring",
     "content": "<p>A signal log of faint pulses, and the crew who refused to stop listening.</p>",
     "pinned": false,
     "createdAt": "2026-03-24T09:43:10.631Z",

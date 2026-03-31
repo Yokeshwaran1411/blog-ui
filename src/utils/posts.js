@@ -9,6 +9,13 @@ const toAbsoluteUrl = (url) => {
   return STRAPI_BASE ? `${STRAPI_BASE}${url}` : url
 }
 
+const slugify = (value) =>
+  String(value || '')
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+
 export const stripHtml = (value) =>
   String(value || '')
     .replace(/<br\s*\/?>/gi, ' ')
@@ -22,6 +29,7 @@ export const normalizePost = (post) => {
   const pinned = Boolean(post?.Pinned ?? post?.pinned ?? attributes?.Pinned ?? attributes?.pinned)
   const createdAt = post?.createdAt || attributes?.createdAt
   const content = post?.content || attributes?.content || ''
+  const slug = post?.slug || attributes?.slug || post?.Slug || attributes?.Slug || slugify(name)
   const image = post?.Image?.[0] || post?.image || attributes?.Image?.[0]
   const imageUrl = image?.url ? toAbsoluteUrl(image.url) : post?.imageUrl
 
@@ -31,6 +39,7 @@ export const normalizePost = (post) => {
     pinned,
     createdAt,
     content,
+    slug,
     image,
     imageUrl
   }

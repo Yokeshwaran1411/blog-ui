@@ -6,11 +6,13 @@ function HighlightSection({
   stripHtml,
   expanded,
   onToggleExpand,
+  onOpenFeatured,
   readProgress,
   readingRef,
   onReadingScroll
 }) {
   const fullContent = featuredPost?.content || '<p>No transmission data available.</p>'
+  const hasFeatured = Boolean(featuredPost)
 
   return (
     <section id='home' className='glass-panel hero-panel highlight-panel scroll-target relative overflow-hidden p-8 md:p-10'>
@@ -54,10 +56,10 @@ function HighlightSection({
         <button
           type='button'
           className='glass-pill px-5 py-2 text-sm font-medium'
-          onClick={onToggleExpand}
-          aria-expanded={expanded}
+          onClick={hasFeatured ? onOpenFeatured : onToggleExpand}
+          aria-expanded={hasFeatured ? undefined : expanded}
         >
-          {expanded ? 'Hide Article' : 'Start Reading'}
+          {hasFeatured ? 'Start Reading' : expanded ? 'Hide Article' : 'Start Reading'}
         </button>
       </div>
 

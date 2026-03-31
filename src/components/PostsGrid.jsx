@@ -1,6 +1,9 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
-function PostsGrid({ posts, stripHtml, onOpenPost }) {
+function PostsGrid({ posts, stripHtml }) {
+  const navigate = useNavigate()
+
   return (
     <section id='posts' className='scroll-target grid gap-6 md:grid-cols-2 lg:grid-cols-3'>
       {posts.map((post, index) => {
@@ -13,15 +16,18 @@ function PostsGrid({ posts, stripHtml, onOpenPost }) {
         const plain = stripHtml(content)
         const isTruncated = plain.length > 250
         const preview = isTruncated ? plain.slice(0, 250) : plain
-        const handleOpen = () => onOpenPost?.(post)
+        const postSlug = post?.slug || name || String(index)
+        const handleOpen = () => {
+          navigate(`/posts/${encodeURIComponent(String(postSlug))}`)
+        }
 
         return (
           <article
-            key={post?.id ?? `${name}-${index}`}
+            key={post?.slug ?? post?.id ?? `${name}-${index}`}
             className='glass-card reveal flex h-full flex-col gap-4 overflow-hidden'
             style={{ animationDelay: `${index * 120}ms` }}
             onClick={handleOpen}
-            role='button'
+            role='link'
             tabIndex={0}
             onKeyDown={(event) => {
               if (event.key === 'Enter' || event.key === ' ') {
@@ -86,16 +92,18 @@ function PostsGrid({ posts, stripHtml, onOpenPost }) {
                   </button>
                 )}
               </p>
-              <button
-                type='button'
-                className='read-link mt-auto w-fit text-sm font-semibold text-cyan-200 hover:text-cyan-100'
-                onClick={(event) => {
-                  event.stopPropagation()
-                  handleOpen()
-                }}
-              >
-                Open article
-              </button>
+              <div className='mt-auto flex flex-wrap items-center justify-between gap-3'>
+                <button
+                  type='button'
+                  className='read-link w-fit text-sm font-semibold text-cyan-200 hover:text-cyan-100'
+                  onClick={(event) => {
+                    event.stopPropagation()
+                    handleOpen()
+                  }}
+                >
+                  Open article
+                </button>
+              </div>
             </div>
           </article>
         )
