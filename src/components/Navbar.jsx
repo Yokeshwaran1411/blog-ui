@@ -51,20 +51,21 @@ function Navbar() {
   const handleClose = () => setMenuOpen(false)
 
   return (
-    <header className='sticky top-6 z-50 w-full px-4'>
+    <header className='mt-6 z-50 w-full px-4'>
       <nav className='glass-nav mx-auto flex w-full max-w-6xl items-center justify-between gap-6 relative'>
         <div className='flex items-center gap-3'>
-          <div className='flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-lg'>
+          <div className='moon-icon' aria-hidden='true'>
+            <span className='moon-spark' />
             <svg
               aria-hidden='true'
               viewBox='0 0 24 24'
-              className='h-5 w-5 text-cyan-100'
+              className='moon-icon-svg'
               fill='none'
-              stroke='currentColor'
-              strokeWidth='1.6'
             >
-              <path d='M4 12c3-4.5 6-6.8 8-6.8S17 7.5 20 12c-3 4.5-6 6.8-8 6.8S7 16.5 4 12Z' />
-              <circle cx='12' cy='12' r='2.2' />
+              <circle cx='12' cy='12' r='8.2' fill='rgba(226,232,240,0.9)' />
+              <circle cx='9' cy='10' r='1.4' fill='rgba(148,163,184,0.65)' />
+              <circle cx='14.5' cy='13.5' r='1.1' fill='rgba(148,163,184,0.55)' />
+              <circle cx='12.5' cy='8.2' r='0.8' fill='rgba(148,163,184,0.5)' />
             </svg>
           </div>
           <div>
