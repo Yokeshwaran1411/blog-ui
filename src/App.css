@@ -172,17 +172,46 @@
 }
 
 .glass-pill {
+  position: relative;
+  overflow: hidden;
   border-radius: 999px;
   background: rgba(34, 211, 238, 0.18);
   border: 1px solid rgba(34, 211, 238, 0.5);
   color: #e0f2fe;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
 }
 
 .glass-pill:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px) scale(1.01);
   border-color: rgba(125, 211, 252, 0.9);
   box-shadow: 0 12px 30px rgba(14, 116, 144, 0.35);
+}
+
+.glass-pill:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 6px 18px rgba(14, 116, 144, 0.25);
+}
+
+.glass-pill:focus-visible {
+  outline: 2px solid rgba(125, 211, 252, 0.6);
+  outline-offset: 3px;
+}
+
+.glass-pill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: translateX(-120%);
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.6s ease;
+  pointer-events: none;
+}
+
+.glass-pill:hover::after,
+.glass-pill:focus-visible::after {
+  opacity: 1;
+  transform: translateX(120%);
 }
 
 .glass-pill-ghost {
@@ -209,6 +238,34 @@
 .nav-link:hover {
   color: white;
   background: rgba(148, 163, 184, 0.15);
+}
+
+.nav-link,
+.read-link {
+  position: relative;
+}
+
+.nav-link::after,
+.read-link::after {
+  content: "";
+  position: absolute;
+  left: 0.6rem;
+  right: 0.6rem;
+  bottom: 2px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after,
+.read-link:hover::after,
+.read-link:focus-visible::after {
+  opacity: 0.7;
+  transform: scaleX(1);
 }
 
 .space-orb {
@@ -382,6 +439,24 @@
 
 .pinned-badge {
   box-shadow: 0 12px 28px rgba(34, 211, 238, 0.25);
+}
+
+.pinned-badge,
+.pinned-badge:hover,
+.pinned-badge:active {
+  transition: none;
+  transform: none;
+  box-shadow: 0 12px 28px rgba(34, 211, 238, 0.25);
+}
+
+.pinned-badge::after {
+  display: none;
+}
+
+.pinned-badge-icon {
+  width: 34px;
+  height: 34px;
+  padding: 0;
 }
 
 .space-content h1,
@@ -1202,6 +1277,20 @@
   .nav-toggle-line,
   .nav-links {
     transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glass-pill,
+  .nav-link,
+  .read-link {
+    transition: none;
+  }
+
+  .glass-pill::after,
+  .nav-link::after,
+  .read-link::after {
+    display: none;
   }
 }
 

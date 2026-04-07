@@ -52,16 +52,18 @@ function HighlightSection({
           <span className='typing-line'>Receiving transmissions...</span>
         </p>
       )}
-      <div className='highlight-actions highlight-reveal mt-6 flex flex-wrap gap-3'>
-        <button
-          type='button'
-          className='glass-pill px-5 py-2 text-sm font-medium'
-          onClick={hasFeatured ? onOpenFeatured : onToggleExpand}
-          aria-expanded={hasFeatured ? undefined : expanded}
-        >
-          {hasFeatured ? 'Start Reading' : expanded ? 'Hide Article' : 'Start Reading'}
-        </button>
-      </div>
+      {!loading && (
+        <div className='highlight-actions highlight-reveal mt-6 flex flex-wrap gap-3'>
+          <button
+            type='button'
+            className='glass-pill px-5 py-2 text-sm font-medium btn-grad'
+            onClick={hasFeatured ? onOpenFeatured : onToggleExpand}
+            aria-expanded={hasFeatured ? undefined : expanded}
+          >
+            {hasFeatured ? 'Start Reading' : expanded ? 'Hide Article' : 'Start Reading'}
+          </button>
+        </div>
+      )}
 
       <div className={`reading-panel ${expanded ? 'is-open' : ''}`}>
         <div className='reading-progress'>

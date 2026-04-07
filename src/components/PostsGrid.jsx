@@ -50,18 +50,21 @@ function PostsGrid({ posts, stripHtml }) {
                 </div>
               )}
               {isPinned && (
-                <span className='glass-pill pinned-badge absolute left-4 top-4 flex items-center gap-2 px-3 py-1 text-[10px] uppercase tracking-[0.3em]'>
+                <span
+                  className='glass-pill pinned-badge pinned-badge-icon absolute left-4 top-4 flex items-center justify-center'
+                  aria-label='Pinned'
+                >
                   <svg
                     aria-hidden='true'
                     viewBox='0 0 24 24'
-                    className='h-3 w-3'
+                    className='h-3.5 w-3.5'
                     fill='none'
                     stroke='currentColor'
                     strokeWidth='1.6'
                   >
                     <path d='M6 4h12a1 1 0 0 1 1 1v15l-7-4-7 4V5a1 1 0 0 1 1-1Z' />
                   </svg>
-                  Pinned
+                  <span className='sr-only'>Pinned</span>
                 </span>
               )}
             </div>

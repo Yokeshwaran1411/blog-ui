@@ -51,9 +51,9 @@ function Navbar() {
   const handleClose = () => setMenuOpen(false)
 
   return (
-    <header className='mt-6 z-50 w-full px-4'>
+    <header className='mt-6 z-50 w-full px-4 relative'>
       <nav className='glass-nav mx-auto flex w-full max-w-6xl items-center justify-between gap-6 relative'>
-        <div className='flex items-center gap-3'>
+        <NavLink to='/' className='flex items-center gap-3' aria-label='OrbitLogs home'>
           <div className='moon-icon' aria-hidden='true'>
             <span className='moon-spark' />
             <svg
@@ -109,7 +109,7 @@ function Navbar() {
             </p>
             <p className='text-xs text-slate-400'>Deep space blog</p>
           </div>
-        </div>
+        </NavLink>
 
         <button
           type='button'
